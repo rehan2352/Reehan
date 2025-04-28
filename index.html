@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammad Rehan Fazal - Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --accent-color: #e74c3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-info a:hover {
+            color: var(--primary-color);
+        }
+        
+        section {
+            padding: 2rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        section:last-child {
+            border-bottom: none;
+        }
+        
+        h2 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .skills-section {
+            margin-bottom: 2rem;
+        }
+        
+        .skills-section h3 {
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .skill-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .skill-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 0.5rem;
+            object-fit: contain;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary-color);
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 5px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .certificates-list {
+            list-style-type: none;
+        }
+        
+        .certificates-list li {
+            margin-bottom: 1rem;
+        }
+        
+        .certificates-list a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .certificates-list a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        .certifications {
+            background: #f6f6fe;
+            padding: 4.5rem 0;
+        }
+
+        .certifications-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .certification-box {
+            background: var(--bg-color);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .certification-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .certification-box h3 {
+            color: var(--main-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .certification-box a {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--second-color);
+            font-weight: 600;
+        }
+
+        .certification-box a:hover {
+            text-decoration: underline;
+        }
+        
+        .leetcode-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--dark-color);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        /* Profile Section Styles */
+        #profile {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem 0;
+        }
+
+        .profile-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .profile-photo {
+            flex: 0 0 200px;
+        }
+
+        .profile-photo img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid white;
+            object-fit: cover;
+        }
+
+        .profile-details {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .profile-details h2 {
+            color: white;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid white;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .profile-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-box {
+            background: rgba(255,255,255,0.1);
+            padding: 0.8rem;
+            border-radius: 5px;
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .stat-box h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .stat-value-large {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        /* Download CV Button */
+        .download-cv {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem 0;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--secondary-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .download-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Get in Touch Section */
+        #contact {
+            background-color: var(--light-color);
+            padding: 3rem 0;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-form h3 {
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .contact-info-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-info-box h3 {
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .contact-details {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-details p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-details i {
+            margin-right: 1rem;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .skills-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .leetcode-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .profile-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-details h2 {
+                border-bottom: none;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Mohammad Rehan Fazal</h1>
+            <p>Computer Science Engineer | Frontend Developer | Problem Solver</p>
+            <div class="contact-info">
+                <a href="https://www.linkedin.com/in/mohammad-rehan-fazal-03093425a/" target="_blank">LinkedIn</a>
+                <a href="mailto:mdrehanfazal2006@gmail.com">Email</a>
+                <a href="tel:+919142512352">Mobile</a>
+                <a href="https://github.com/rehan2352" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Profile Section -->
+    <section id="profile">
+        <div class="container profile-container">
+            <div class="profile-photo">
+                <img src="https://i.imgur.com/d36hmW7.jpeg" alt="Mohammad Rehan Fazal">
+            </div>
+            
+            <div class="profile-details">
+                <h2>About Me</h2>
+                <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">
+                    Passionate Computer Science student at Lovely Professional University with expertise in 
+                    <b>Software testing</b>, <b>Frontend development</b>, and problem-solving. Committed to creating efficient 
+                    solutions and continuously expanding my technical skills.
+                </p>
+                
+                <div class="profile-stats">
+                    <div class="stat-box">
+                        <h4>Education</h4>
+                        <p class="stat-value-large">B.Tech CSE</p>
+                        <p style="font-size: 0.9rem;">LPU University</p>
+                    </div>
+                    
+                    <div class="stat-box">
+                        <h4>Location</h4>
+                        <p class="stat-value-large">Punjab, India</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Download CV Button -->
+        <div class="container download-cv">
+            <a href="https://drive.google.com/drive/my-drive" class="download-btn">Download CV</a>
+        </div>
+    </section>
+
+    <main class="container">
+        <section id="skills">
+            <h2>Skills</h2>
+            
+            <div class="skills-section">
+                <h3>Programming Languages</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" class="skill-icon" alt="C">
+                        <span>C</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" class="skill-icon" alt="C++">
+                        <span>C++</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="skill-icon" alt="Python">
+                        <span>Python</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="skill-icon" alt="JavaScript">
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skills-section">
+                <h3>Web Development</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="skill-icon" alt="HTML5">
+                        <span>HTML5</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="skill-icon" alt="CSS3">
+                        <span>CSS3</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="skill-icon" alt="React">
+                        <span>React</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" class="skill-icon" alt="Bootstrap">
+                        <span>Bootstrap</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skills-section">
+                <h3>Frameworks & Libraries</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/selenium/selenium-original.svg" class="skill-icon" alt="Selenium">
+                        <span>Selenium</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" class="skill-icon" alt="Jenkins">
+                        <span>Jenkins</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" class="skill-icon" alt="Postman">
+                        <span>Postman</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg" class="skill-icon" alt="Jira">
+                        <span>Jira</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skills-section">
+                <h3>Tools & Platforms</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="skill-icon" alt="MySQL">
+                        <span>MySQL</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" class="skill-icon" alt="VS Code">
+                        <span>VS Code</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eclipse/eclipse-original.svg" class="skill-icon" alt="Eclipse">
+                        <span>Eclipse</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="skill-icon" alt="Git">
+                        <span>Git</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" class="skill-icon" alt="GitHub">
+                        <span>GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">August 2022 - Present</div>
+                    <h3 class="timeline-title">Lovely Professional University</h3>
+                    <p>Bachelor of Technology - Computer Science and Engineering</p>
+                    <p>| Punjab, India</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">April 2020 - March 2022</div>
+                    <h3 class="timeline-title">SS College</h3>
+                    <p>Intermediate (12th Grade) | Percentage: 84%</p>
+                    <p>Siwan, Bihar</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">March 2020</div>
+                    <h3 class="timeline-title">Minerva Public School</h3>
+                    <p>Matriculation (10th Grade) | Percentage: 68%</p>
+                    <p>Siwan, Bihar</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Internship & Training</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">February 2025</div>
+                    <h3 class="timeline-title">Prodigy InfoTech (Software-Based Company)</h3>
+                    <ul class="skills-list">
+                        <li>Worked with technologies like Selenium WebDriver, TestNG, JUnit, Cucumber, Postman, Appium, and SoapUI</li>
+                        <li>Gained experience in CI/CD pipelines (Jenkins, GitLab CI)</li>
+                        <li>Emphasized collaboration, open communication, and corporate social responsibility</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3 class="project-title">Online Book Store</h3>
+                    <ul class="skills-list">
+                        <li>Developed a responsive e-commerce website using React.js, HTML, CSS, and JavaScript</li>
+                        <li>Features: Book browsing & search functionality, User authentication, Shopping cart & secure checkout</li>
+                    </ul>
+                </div>
+                <div class="project-card">
+                    <h3 class="project-title">API Testing for Flight Management System</h3>
+                    <ul class="skills-list">
+                        <li>Conducted API testing for flight-related endpoints (flight paths, seat availability, etc.)</li>
+                        <li>Validated response codes, data accuracy, and performance under different conditions</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="certifications">
+            <h2>Certifications</h2>
+            <ul class="certificates-list">
+                <li>
+                    <strong>IBM Introduction to Software Engineering</strong>
+                    <br>
+                    <a href="https://www.coursera.org/account/accomplishments/verify/F8Z7Q87GFA7X" target="_blank">View Certificate</a>
+                </li>
+                <li>
+                    <strong>Cloud Computing (NPTEL)</strong>
+                    <br>
+                    <a href="https://archive.nptel.ac.in/noc/B2C/candidate_login/main.php" target="_blank">View Certificate</a>
+                </li>
+                <li>
+                    <strong>Introduction to Software Testing</strong>
+                    <br>
+                    <a href="https://www.coursera.org/account/accomplishments/verify/NAGXKQQP9NL8" target="_blank">View Certificate</a>
+                </li>
+                <li>
+                    <strong>The Bits & Bytes of Computer Networks</strong>
+                    <br>
+                    <a href="https://www.coursera.org/account/accomplishments/verify/M6VAN25KBBQC" target="_blank">View Certificate</a>
+                </li>
+            </ul>
+        </section>
+
+        <section id="leetcode">
+            <h2>LeetCode Stats</h2>
+            <div class="leetcode-stats">
+                <div class="stat-card">
+                    <div class="stat-value">73</div>
+                    <div class="stat-label">Problems Solved</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">1,465,767</div>
+                    <div class="stat-label">Rank</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">61</div>
+                    <div class="stat-label">Active Days</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">42</div>
+                    <div class="stat-label">Max Streak</div>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem;">
+                <p><strong>Problem Breakdown:</strong> Easy (22) | Medium (43) | Hard (8)</p>
+            </div>
+        </section>
+
+        <!-- Get in Touch Section -->
+        <section id="contact">
+            <div class="container">
+                <h2>Get in Touch</h2>
+                <div class="contact-container">
+                    <div class="contact-form">
+                        <h3>Send Me a Message</h3>
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </form>
+                    </div>
+                    
+                    <div class="contact-info-box">
+                        <h3>Contact Information</h3>
+                        <div class="contact-details">
+                            <p>
+                                <i>📍</i>
+                                <span>Punjab, India</span>
+                            </p>
+                            <p>
+                                <i>📧</i>
+                                <span>mdrehanfazal2006@gmail.com</span>
+                            </p>
+                            <p>
+                                <i>📱</i>
+                                <span>+91 9142512352</span>
+                            </p>
+                        </div>
+                        
+                        <h3 style="margin-top: 2rem;">Connect With Me</h3>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/mohammad-rehan-fazal-03093425a/" target="_blank" title="LinkedIn">
+                                <i>LI</i>
+                            </a>
+                            <a href="https://github.com/rehan2352" target="_blank" title="GitHub">
+                                <i>GH</i>
+                            </a>
+                            <a href="mailto:mdrehanfazal2006@gmail.com" title="Email">
+                                <i>✉️</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Mohammad Rehan Fazal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
